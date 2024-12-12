@@ -12,7 +12,7 @@ from nltk.stem import WordNetLemmatizer
 # Inisialisasi Flask app
 app = Flask(__name__)
 
-CORS(app)
+CORS(app, resources={r"/chat": {"origins": "http://localhost:3000"}})
 
 # Download necessary NLTK data
 nltk.download('punkt')
@@ -96,4 +96,4 @@ def chat():
     return jsonify({"response": response})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=8080)
